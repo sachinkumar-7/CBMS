@@ -1,0 +1,40 @@
+CREATE DATABASE FBMS;
+USE FBMS;
+
+-- drop table CABS;
+
+CREATE TABLE CABS(
+	id  int primary key auto_increment,
+    License_plate varchar(50) NOT NULL UNIQUE,
+    CarModel_id int NOT NULL UNIQUE,
+    Manufacture_year int NOT NULL,
+    Owner_id int not null,
+    Cab_active bool
+);
+
+
+Create table Driver(
+	id int primary key auto_increment,
+    first_name varchar(50) not null,
+    last_name varchar(50),
+    birth_date date not null,
+    driving_license_num varchar(150),
+    expiry_date date,
+	working bool
+);
+
+Create table car_model(
+	id int primary key auto_increment,
+    model_name varchar(100) not null,
+    model_description text not null 
+);
+
+Create table Shift(
+	id int primary key auto_increment,
+    driver_id int not null,
+    cab_id int,
+    shift_start_time timestamp not null,
+    shift_end_time timestamp not null,
+    login_time timestamp not null,
+	logout_time timestamp not null
+);
